@@ -1,0 +1,31 @@
+{
+    "name": "sam_mah_z10",
+    "formal_name": "sam_mah_z10",
+    "suite": "sam",
+    "root_dir": "sam_mah_z10",
+    "root_file": "simulation.hdf5",
+    "simulation_definition": {
+        "cosmology": "tng",
+        "is_baryon": false,
+        "is_fullbox": true,
+        "is_fullcover": true,
+        "partition": null,
+        "n_snapshots": 6,
+        "mass_table": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        "scale_factors": [0.09090909090909091, 0.1111111111111111, 0.14285714285714285, 0.2, 0.3333333333333333, 1.0],
+        "redshifts": [10.0, 8.0, 6.0, 4.0, 2.0, 0.0],
+        "lookback_times": [9.026220712742878, 8.913606477295886, 8.715408180034073, 8.302425417408328, 7.121882374658747, 0.0],
+        "box_size": 100.0
+    },
+    "mahgic_extension": {
+        "has_branch_ext": false,
+        "has_position_ext": false
+    }
+}

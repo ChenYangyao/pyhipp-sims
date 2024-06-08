@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyhipp_sims"
+version = "1.0.0"
+authors = [
+  { name="Yangyao Chen", email="yangyaochen.astro@foxmail.com" },
+]
+description = "A Python package for analyzing galaxy simulations"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "pyhipp"
+]
+
+[project.urls]
+Repository = "https://github.com/ChenYangyao/pyhipp_sims.git"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  ".", "src"
+]

@@ -1,0 +1,43 @@
+{
+    "name": "millennium_2_scaled_wmap7",
+    "formal_name": "Millennium-II-Scaled_WMAP7",
+    "suite": "millennium",
+    "root_dir": "millennium_2_scaled_wmap7",
+    "root_file": "simulation.hdf5",
+    "simulation_definition": {
+        "cosmology": "millennium_wmap7",
+        "is_baryon": false,
+        "is_fullbox": true,
+        "is_fullcover": true,
+        "partition": null,
+        "n_snapshots": 3,
+        "mass_table": [
+            0.0,
+            0.0007490795774239065,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        "scale_factors": [
+            0.333333333333333,
+            0.5,
+            1.0
+        ],
+        "redshifts": [
+            2.0,
+            1.0,
+            0.0
+        ],
+        "lookback_times": [
+            7.31836079,
+            5.4825879,
+            0.0
+        ],
+        "box_size": 100.0
+    },
+    "mahgic_extension": {
+        "has_branch_ext": false,
+        "has_position_ext": false
+    }
+}
