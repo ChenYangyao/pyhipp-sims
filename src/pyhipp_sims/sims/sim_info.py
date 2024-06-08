@@ -24,7 +24,7 @@ class _Predefined(HasSimpleRepr, HasCache):
             data_dir = Path(os.environ[key]) / 'data' / 'simulations'
         else:
             _data_dir = importlib_resources.files(
-                'pyhipp_sims').joinpath('data/sims/runs')
+                'pyhipp_sims').joinpath('data/simulations')
             with importlib_resources.as_file(_data_dir) as p:
                 data_dir = p
         self.data_dir = data_dir
