@@ -1,16 +1,16 @@
 # PyHippSims - A Python package for analyzing galaxy simulations
 
-[![Last commit](https://img.shields.io/github/last-commit/ChenYangyao/pyhipp_sims/master)](https://github.com/ChenYangyao/pyhipp_sims/commits/master)
-[![Workflow Status](https://img.shields.io/github/actions/workflow/status/ChenYangyao/pyhipp_sims/run-test.yml)](https://github.com/ChenYangyao/pyhipp_sims/actions/workflows/run-test.yml)
-[![MIT License](https://img.shields.io/badge/License-MIT-blue)](https://github.com/ChenYangyao/pyhipp_sims/blob/master/LICENSE)
-[![PyPI](https://img.shields.io/pypi/v/pyhipp_sims)](https://pypi.org/project/pyhipp_sims/)
+[![Last commit](https://img.shields.io/github/last-commit/ChenYangyao/pyhipp-sims/master)](https://github.com/ChenYangyao/pyhipp-sims/commits/master)
+[![Workflow Status](https://img.shields.io/github/actions/workflow/status/ChenYangyao/pyhipp-sims/run-test.yml)](https://github.com/ChenYangyao/pyhipp-sims/actions/workflows/run-test.yml)
+[![MIT License](https://img.shields.io/badge/License-MIT-blue)](https://github.com/ChenYangyao/pyhipp-sims/blob/master/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/pyhipp-sims)](https://pypi.org/project/pyhipp-sims/)
 
 The package provides a set of unified interface to load and analyze N-body and hydrodynamical simulations, mainly for 
 galaxy formation.
 
 To install, run:
 ```bash
-pip install pyhipp_sims
+pip install pyhipp-sims
 ```
 Alternatively, you can clone the repository and install the package locally via `pip install -e /path/to/the/repo`.
 

@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pyhipp_sims"
+name = "pyhipp-sims"
 version = "1.0.0"
 authors = [
   { name="Yangyao Chen", email="yangyaochen.astro@foxmail.com" },
@@ -21,7 +21,7 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/ChenYangyao/pyhipp_sims.git"
+Repository = "https://github.com/ChenYangyao/pyhipp-sims.git"
 
 [tool.setuptools.packages.find]
 where = ["src"]
