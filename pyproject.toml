@@ -17,7 +17,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-    "pyhipp"
+    "pyhipp", "flake8", "pytest>=7.0.0"
 ]
 
 [project.urls]
