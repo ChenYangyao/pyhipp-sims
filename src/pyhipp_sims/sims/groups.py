@@ -81,6 +81,10 @@ class SubhaloLoaderTng(SubhaloLoader):
         g_subh = g_base['Subhalo']
         g_grp = g_base['Group']
         
+        z = self.sim_info.redshifts[self.snap]
+        _a = 1.0 / (1.0 + z)
+        r_scale = 1.0e-3 * _a
+        
         n_subhs, n_grps = head['Nsubgroups_Total', 'Ngroups_Total']
         key_map = {
             'grp_id': ('SubhaloGrNr', None, None),
@@ -88,14 +92,26 @@ class SubhaloLoaderTng(SubhaloLoader):
             'm_star': ('SubhaloMassInRadType', 4, None),
             'm_bh_': ('SubhaloMassInRadType', 5, None),   # including attached gas
             'm_bh': ('SubhaloBHMass', None, None),        # real BH mass
+            
+            'n_p_gas': ('SubhaloLenType', 0, None),       # number of particles/cells  
+            'n_p_dm': ('SubhaloLenType', 1, None),
+            'n_p_star': ('SubhaloLenType', 4, None),
+            'n_p_bh': ('SubhaloLenType', 5, None),
+            
             'sfr': ('SubhaloSFRinRad', None, None),
-            'x': ('SubhaloPos', None, 1.0e-3),
+            'x': ('SubhaloPos', None, 1.0e-3),                         # cMpc/h
             'v': ('SubhaloVel', None, None),
+            
+            'r_half_gas': ('SubhaloHalfmassRadType', 0, r_scale),      # pMpc/h
+            'r_half_dm': ('SubhaloHalfmassRadType', 1, r_scale),
+            'r_half_star': ('SubhaloHalfmassRadType', 4, r_scale),
             
             'flag': self._load_flag,  
             'is_c': self._load_is_cent,
             
+            'snap_off_gas': lambda : self._load_offset('snap_off_gas'),
             'snap_off_dm': lambda : self._load_offset('snap_off_dm'),
+            'snap_off_star': lambda: self._load_offset('snap_off_star'),
             'id_in_tree': lambda : self._load_offset('id_in_tree'),
             'subhalo_id': lambda : self._load_offset('subhalo_id'),
             'last_pro': lambda : self._load_offset('last_pro'),
@@ -131,8 +147,12 @@ class SubhaloLoaderTng(SubhaloLoader):
     def _load_offset(self, key):
         offcat = self.root_file[f'Offsets/{self.snap}/Subhalo']
         subl_dsets = offcat['SubLink'].datasets
-        if key == 'snap_off_dm':
+        if key == 'snap_off_gas':
+            out = offcat['SnapByType'][:, 0]
+        elif key == 'snap_off_dm':
             out = offcat['SnapByType'][:, 1]
+        elif key == 'snap_off_star':
+            out = offcat['SnapByType'][:, 4]
         elif key == 'id_in_tree':
             out = subl_dsets['RowNum']
         elif key == 'subhalo_id':
