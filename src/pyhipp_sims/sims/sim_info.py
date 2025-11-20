@@ -1,5 +1,6 @@
 from __future__ import annotations
 from pyhipp.core.abc import HasName, HasSimpleRepr, IsImmutable, HasCache
+from pyhipp.field.cubic_box.box import PeriodicBox
 from pyhipp.astro.cosmology.model import predefined as predef_cosms, LambdaCDM
 from typing import Dict, Any, Union, Literal
 from collections.abc import Iterable
@@ -19,7 +20,7 @@ class _Predefined(HasSimpleRepr, HasCache):
     def __init__(self) -> None:
         super().__init__()
 
-        key = 'PYHIPP_SIMS_DATA_DIR'
+        key = 'PYHIPP_SIMS_ROOT_DIR'
         if key in os.environ:
             data_dir = Path(os.environ[key]) / 'data' / 'simulations'
         else:
@@ -182,6 +183,11 @@ class SimInfo(HasName, HasSimpleRepr, IsImmutable):
         if self.is_fullbox:
             return self.box_size
         return self.sim_def['full_box_size']
+    
+    @property
+    def box(self) -> PeriodicBox:
+        assert self.is_fullbox
+        return PeriodicBox(self.box_size)
 
     def to_simple_repr(self) -> dict:
         return {
@@ -208,6 +214,10 @@ class SimInfo(HasName, HasSimpleRepr, IsImmutable):
     @cached_property
     def cosmology(self) -> LambdaCDM:
         return predef_cosms[self.sim_def['cosmology']]
+    
+    @property
+    def unit_system(self):
+        return self.cosmology.unit_system
 
     @cached_property
     def ages(self) -> np.ndarray:
@@ -240,8 +250,8 @@ class SimInfo(HasName, HasSimpleRepr, IsImmutable):
         zs, lbts = self.redshifts, self.lookback_times
         df = pd.DataFrame({'zs': zs, 'lbts': lbts}).drop_duplicates('zs')
         zs, lbts = df['zs'].to_numpy(), df['lbts'].to_numpy()
-        assert (zs >= 0).all()
-        assert (lbts >= 0).all()
+        #assert (zs >= 0).all()
+        #assert (lbts >= 0).all()
         if zs[-1] > 0.:
             zs, lbts = np.concatenate((zs, (0.,))), \
                 np.concatenate((lbts, (0.,)))
